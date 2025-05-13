@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# vim: set ft=bash :
+
+if [ "$#" -eq 0 ]; then
+  echo "usage:"
+  echo "$0 [MODE] FILE"
+  echo ""
+  echo "MODE: gcc/clang"
+  exit 1
+elif [ "$#" -eq 1 ]; then
+  MODE=gcc
+  FILE="$1"
+elif [ "$#" -eq 2 ]; then
+  MODE="$1"
+  FILE="$2"
+else
+  echo "too many arguments"
+  exit 1
+fi
+
+if [ "$MODE" = "gcc" ]; then
+  g++ -std=gnu++20 -O2 -Wall -Wextra \
+      -mtune=native -march=native \
+      -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647 \
+      -o ./a.out \
+      "$FILE"
+elif [ "$MODE" = "clang" ]; then
+  clang++ -std=c++20 -Wall -Wextra -O2 \
+          -mtune=native -march=native \
+          -fconstexpr-depth=2147483647 -fconstexpr-steps=2147483647 \
+          -fuse-ld=lld -o ./a.out \
+          "$FILE"
+else
+  echo "unknown mode: $MODE"
+  exit 1
+fi
