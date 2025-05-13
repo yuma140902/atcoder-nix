@@ -5,3 +5,5 @@ CompileFlags:
   -Wall,
   -Wextra
   ]
+Diagnostics:
+  UnusedIncludes: None # None or Strict
