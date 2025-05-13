@@ -10,6 +10,7 @@
 // NOLINTBEGIN(misc-unused-using-decls)
 using std::cerr;
 using std::cout;
+using std::ignore;
 using std::pair;
 using std::tuple;
 using std::vector;
@@ -22,6 +23,9 @@ namespace views = ::std::ranges::views;	 // NOLINT(misc-unused-alias-decls)
 	do {                                                  \
 		std::cerr << #x << " = " << (x) << std::endl; \
 	} while (0)
+#define zzz IGNORE_INDIRECT(__LINE__)
+#define IGNORE_INDIRECT(id) IGNORE_INNER(id)
+#define IGNORE_INNER(id) dummy_unused_##id [[maybe_unused]]
 
 namespace util {
 
@@ -37,12 +41,13 @@ using s64 = std::uint64_t;
 using f32 = float;
 using f64 = double;
 
-constexpr char endl = '\n';
-constexpr i32 INF = INT_MAX / 2;
-constexpr i64 INFL = LONG_MAX / 2;
-constexpr f64 EPS = 1e-10;
+constexpr char endl [[maybe_unused]] = '\n';
+constexpr i32 INF [[maybe_unused]] = INT_MAX / 2;
+constexpr i64 INFL [[maybe_unused]] = LONG_MAX / 2;
+constexpr f64 EPS [[maybe_unused]] = 1e-10;
 
 template <class T, class S>
+[[nodiscard]]
 inline auto fequal(T f, S g) -> bool {
 	return std::abs(f - g) < EPS;
 }
@@ -71,14 +76,14 @@ constexpr std::array<std::pair<i32, i32>, 4> around{
 }  // namespace util
 using namespace ::util;
 
-int main(int argc, char* argv[]) {
+int main(int argc [[maybe_unused]], char* argv [[maybe_unused]][]) {
 	for (auto i : iota(0, 10)) {
 		debug(i);
 	}
 
 	f32 a{1.0};
 	f32 b{10001.0};
-	for (auto i : iota(0, 10000)) {
+	for (auto zzz : iota(0, 10000)) {
 		b -= 1.0;
 	}
 	if (fequal(b, a)) {
@@ -96,6 +101,7 @@ int main(int argc, char* argv[]) {
 	i32 ar[]{4, 5, 6};
 	i32* first = ranges::begin(ar);
 	i32* end = ranges::end(ar);
+	ignore = first = end;
 	for (auto i : ar) {
 		debug(i);
 	}
@@ -110,10 +116,4 @@ int main(int argc, char* argv[]) {
 	// TODO
 	std::cout << std::flush;
 	return 0;
-
-	(void)INF;
-	(void)INFL;
-	(void)EPS;
-	(void)argc;
-	(void)argv;
 }
