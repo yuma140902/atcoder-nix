@@ -9,10 +9,10 @@
 #include <vector>
 
 // NOLINTBEGIN(misc-unused-using-decls)
-using std::ranges::views::iota;
+using ::std::ranges::views::iota;
 // NOLINTEND(misc-unused-using-decls)
-using namespace std;
-namespace views = std::ranges::views;  // NOLINT(misc-unused-alias-decls)
+using namespace ::std;
+namespace views = ::std::ranges::views;	 // NOLINT(misc-unused-alias-decls)
 
 #define debug(x)                                              \
 	do {                                                  \
@@ -72,42 +72,6 @@ constexpr std::array<std::pair<i32, i32>, 4> around [[maybe_unused]]{
 using namespace ::util;
 
 int main(int argc [[maybe_unused]], char* argv [[maybe_unused]][]) {
-	for (auto i : iota(0, 10)) {
-		debug(i);
-	}
-
-	f32 a{1.0};
-	f32 b{10001.0};
-	for (auto zzz : iota(0, 10000)) {
-		b -= 1.0;
-	}
-	if (fequal(b, a)) {
-		cout << "yes\n";
-	} else {
-		cout << "no\n";
-	}
-
-	i32 max{0};
-	for (auto i : iota(0, 100)) {
-		assign_max(max, i % 4);
-	}
-	debug(max);
-
-	i32 ar[]{4, 5, 6};
-	i32* first = ranges::begin(ar);
-	i32* end = ranges::end(ar);
-	ignore = first = end;
-	for (auto i : ar) {
-		debug(i);
-	}
-
-	cout << nl;
-	for (auto& [dx, dy] : around) {
-		debug(dx);
-		debug(dy);
-		cout << nl;
-	}
-
 	// TODO
 	std::cout << std::flush;
 	return 0;
