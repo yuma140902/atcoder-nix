@@ -17,7 +17,6 @@
 			devShells.default = pkgs.mkShell rec {
 				name = "atcoder";
 				packages = with pkgs; [
-					lld_16
 					clang_16
 					llvmPackages_16.clang-tools
 					llvmPackages_16.libcxxClang

@@ -28,7 +28,7 @@ elif [ "$MODE" = "clang" ]; then
   clang++ -std=c++20 -Wall -Wextra -O2 \
           -mtune=native -march=native \
           -fconstexpr-depth=2147483647 -fconstexpr-steps=2147483647 \
-          -fuse-ld=lld -o ./a.out \
+          -o ./a.out \
           "$FILE"
 else
   echo "unknown mode: $MODE"
