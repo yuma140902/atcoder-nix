@@ -1,5 +1,6 @@
 #include <climits>
 #include <cmath>
+#include <concepts>
 #include <cstddef>
 #include <cstdint>
 #include <iostream>
@@ -8,16 +9,10 @@
 #include <vector>
 
 // NOLINTBEGIN(misc-unused-using-decls)
-using std::cerr;
-using std::cout;
-using std::ignore;
-using std::pair;
-using std::tuple;
-using std::vector;
 using std::ranges::views::iota;
 // NOLINTEND(misc-unused-using-decls)
-namespace ranges = ::std::ranges;	 // NOLINT(misc-unused-alias-decls)
-namespace views = ::std::ranges::views;	 // NOLINT(misc-unused-alias-decls)
+using namespace std;
+namespace views = std::ranges::views;  // NOLINT(misc-unused-alias-decls)
 
 #define debug(x)                                              \
 	do {                                                  \
@@ -41,33 +36,33 @@ using s64 = std::uint64_t;
 using f32 = float;
 using f64 = double;
 
-constexpr char endl [[maybe_unused]] = '\n';
+constexpr char nl [[maybe_unused]] = '\n';
 constexpr i32 INF [[maybe_unused]] = INT_MAX / 2;
 constexpr i64 INFL [[maybe_unused]] = LONG_MAX / 2;
 constexpr f64 EPS [[maybe_unused]] = 1e-10;
 
-template <class T, class S>
 [[nodiscard]]
-inline auto fequal(T f, S g) -> bool {
+inline auto fequal(std::floating_point auto f, std::floating_point auto g)
+    -> bool {
 	return std::abs(f - g) < EPS;
 }
 
 template <class T, class S>
-inline auto assign_max(T& lhs, S&& rhs) -> bool {
-	bool compare = lhs < rhs;
-	if (compare) {
+inline auto assign_max(T& lhs, S rhs) -> bool {
+	if (lhs < rhs) {
 		lhs = rhs;
+		return true;
 	}
-	return compare;
+	return false;
 }
 
 template <class T, class S>
-inline auto assign_min(T& lhs, S&& rhs) -> bool {
-	bool compare = lhs > rhs;
-	if (compare) {
+inline auto assign_min(T& lhs, S rhs) -> bool {
+	if (lhs > rhs) {
 		lhs = rhs;
+		return true;
 	}
-	return compare;
+	return false;
 }
 
 constexpr std::array<std::pair<i32, i32>, 4> around [[maybe_unused]]{
@@ -106,11 +101,11 @@ int main(int argc [[maybe_unused]], char* argv [[maybe_unused]][]) {
 		debug(i);
 	}
 
-	cout << endl;
+	cout << nl;
 	for (auto& [dx, dy] : around) {
 		debug(dx);
 		debug(dy);
-		cout << endl;
+		cout << nl;
 	}
 
 	// TODO
