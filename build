@@ -32,7 +32,7 @@ elif [ "$MODE" = "clang" ]; then
           "$FILE"
 elif [ "$MODE" = "san" ]; then
   clang++ -std=c++20 -Wall -Wextra -O0 \
-          -g -fsanitize=undefined,address -fno-omit-frame-pointer \
+          -g -fsanitize=address,undefined,float-divide-by-zero,unsigned-integer-overflow -fno-omit-frame-pointer \
           -o ./a.out \
           "$FILE"
 else
