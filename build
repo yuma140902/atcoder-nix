@@ -8,7 +8,7 @@ if [ "$#" -eq 0 ]; then
   echo "MODE: gcc/clang"
   exit 1
 elif [ "$#" -eq 1 ]; then
-  MODE=gcc
+  MODE=clang
   FILE="$1"
 elif [ "$#" -eq 2 ]; then
   MODE="$1"
