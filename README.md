@@ -1,0 +1,23 @@
+# atcoder-nix
+
+## 開発用シェルの起動方法
+
+```sh
+nix shell -c "$SHELL"
+```
+
+## プログラムのビルド方法
+
+```sh
+./build [MODE] C++ファイル
+```
+
+`MODE` には `gcc`、`clang`、`san` のいずれかを指定する。
+
+- `gcc` - gcc でコンパイルする
+- `clang` - clang でコンパイルする
+- `san` - clang でコンパイルして Address Sanitizer、Undefined Behavior Sanitizer をリンクする
+
+`MODE` を省略すると `clang` が指定されたものとみなされる。
+
+`a.out` が出力されるので `./a.out` で実行する。
