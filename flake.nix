@@ -14,10 +14,9 @@
 				config.allowUnfree = true;
 			}; 
 		in {
-			devShells.default = pkgs.mkShell rec {
+			devShells.default = pkgs.mkShell {
 				name = "atcoder";
 				packages = with pkgs; [
-					clang_16
 					llvmPackages_16.clang-tools
 					llvmPackages_16.libcxxClang
 					gcc12
