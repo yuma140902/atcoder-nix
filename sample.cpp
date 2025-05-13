@@ -70,7 +70,7 @@ inline auto assign_min(T& lhs, S&& rhs) -> bool {
 	return compare;
 }
 
-constexpr std::array<std::pair<i32, i32>, 4> around{
+constexpr std::array<std::pair<i32, i32>, 4> around [[maybe_unused]]{
     std::pair{-1, 0}, std::pair{1, 0}, std::pair{0, -1}, std::pair{0, 1}};
 
 }  // namespace util
