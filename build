@@ -5,7 +5,7 @@ if [ "$#" -eq 0 ]; then
   echo "usage:"
   echo "$0 [MODE] FILE"
   echo ""
-  echo "MODE: gcc/clang"
+  echo "MODE: gcc/clang/san"
   exit 1
 elif [ "$#" -eq 1 ]; then
   MODE=clang
@@ -28,6 +28,11 @@ elif [ "$MODE" = "clang" ]; then
   clang++ -std=c++20 -Wall -Wextra -O2 \
           -mtune=native -march=native \
           -fconstexpr-depth=2147483647 -fconstexpr-steps=2147483647 \
+          -o ./a.out \
+          "$FILE"
+elif [ "$MODE" = "san" ]; then
+  clang++ -std=c++20 -Wall -Wextra -O0 \
+          -g -fsanitize=undefined,address -fno-omit-frame-pointer \
           -o ./a.out \
           "$FILE"
 else

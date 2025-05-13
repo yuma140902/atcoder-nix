@@ -23,6 +23,7 @@
 					gcc12
 					bear
 				];
+				hardeningDisable = [ "fortify" ];
 			};
 		});
 }
