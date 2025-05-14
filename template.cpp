@@ -37,10 +37,10 @@ using s64 = std::uint64_t;
 using f32 = float;
 using f64 = double;
 
-constexpr char nl [[maybe_unused]] = '\n';
-constexpr i32 INF [[maybe_unused]] = INT_MAX / 2;
-constexpr i64 INFL [[maybe_unused]] = LONG_MAX / 2;
-constexpr f64 EPS [[maybe_unused]] = 1e-10;
+[[maybe_unused]] constexpr char nl = '\n';
+[[maybe_unused]] constexpr i32 INF = INT_MAX / 2;
+[[maybe_unused]] constexpr i64 INFL = LONG_MAX / 2;
+[[maybe_unused]] constexpr f64 EPS = 1e-10;
 
 template <std::floating_point T, std::floating_point S>
 [[nodiscard]]
@@ -66,13 +66,13 @@ inline auto assign_min(T& lhs, T rhs) -> bool {
 	return false;
 }
 
-constexpr std::array<std::pair<i32, i32>, 4> around [[maybe_unused]]{
+[[maybe_unused]] constexpr std::array<std::pair<i32, i32>, 4> around{
     std::pair{-1, 0}, std::pair{1, 0}, std::pair{0, -1}, std::pair{0, 1}};
 
 }  // namespace util
 using namespace ::util;
 
-int main(int argc [[maybe_unused]], char* argv [[maybe_unused]][]) {
+int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[]) {
 	// TODO
 	std::cout << std::flush;
 	return 0;
