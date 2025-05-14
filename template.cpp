@@ -41,14 +41,14 @@ constexpr i32 INF [[maybe_unused]] = INT_MAX / 2;
 constexpr i64 INFL [[maybe_unused]] = LONG_MAX / 2;
 constexpr f64 EPS [[maybe_unused]] = 1e-10;
 
+template <std::floating_point T, std::floating_point S>
 [[nodiscard]]
-inline auto fequal(std::floating_point auto f, std::floating_point auto g)
-    -> bool {
+inline auto fequal(T f, S g) -> bool {
 	return std::abs(f - g) < EPS;
 }
 
-template <class T, class S>
-inline auto assign_max(T& lhs, S rhs) -> bool {
+template <std::totally_ordered T>
+inline auto assign_max(T& lhs, T rhs) -> bool {
 	if (lhs < rhs) {
 		lhs = rhs;
 		return true;
@@ -56,8 +56,8 @@ inline auto assign_max(T& lhs, S rhs) -> bool {
 	return false;
 }
 
-template <class T, class S>
-inline auto assign_min(T& lhs, S rhs) -> bool {
+template <std::totally_ordered T>
+inline auto assign_min(T& lhs, T rhs) -> bool {
 	if (lhs > rhs) {
 		lhs = rhs;
 		return true;
