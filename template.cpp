@@ -66,6 +66,25 @@ constexpr inline auto assign_min(T& lhs, T rhs) -> bool {
 	return false;
 }
 
+template <class T, class Id>
+struct newtype {
+	T value;
+	explicit constexpr newtype(T&& v) : value{std::forward<T>(v)} {}
+
+	constexpr newtype() = default;
+	~newtype() = default;
+	constexpr newtype(const newtype&) = default;
+	constexpr newtype(newtype&&) = default;
+	constexpr newtype& operator=(const newtype&) = default;
+	constexpr newtype& operator=(newtype&&) = default;
+};
+
+#define NEWTYPE_OP(newtype, ty, op)                           \
+	constexpr inline ty operator op(const newtype& lhs,   \
+					const newtype& rhs) { \
+		return lhs.value op rhs.value;                \
+	}
+
 [[maybe_unused]] constexpr std::array<std::pair<i32, i32>, 4> around{
     std::pair{-1, 0}, std::pair{1, 0}, std::pair{0, -1}, std::pair{0, 1}};
 
