@@ -16,7 +16,7 @@ nix shell -c "$SHELL"
 
 - `gcc` - gcc でコンパイルする
 - `clang` - clang でコンパイルする
-- `san` - clang でコンパイルして Address Sanitizer、Undefined Behavior Sanitizer をリンクする
+- `san` - Address Sanitizer、Undefined Behavior Sanitizer を有効化して clang でコンパイルする
 
 `MODE` を省略すると `clang` が指定されたものとみなされる。
 
