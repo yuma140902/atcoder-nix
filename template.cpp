@@ -14,9 +14,10 @@ using ::std::ranges::views::iota;
 using namespace ::std;
 namespace views = ::std::ranges::views;	 // NOLINT(misc-unused-alias-decls)
 
-#define debug(x)                                              \
-	do {                                                  \
-		std::cerr << #x << " = " << (x) << std::endl; \
+#define debug(x)                                                        \
+	do {                                                            \
+		std::cerr << "\033[33m(line " << __LINE__ << ") " << #x \
+			  << " = " << (x) << "\033[m" << std::endl;     \
 	} while (0)
 #define zzz IGNORE_INDIRECT(__LINE__)
 #define IGNORE_INDIRECT(id) IGNORE_INNER(id)
@@ -72,6 +73,13 @@ constexpr std::array<std::pair<i32, i32>, 4> around [[maybe_unused]]{
 using namespace ::util;
 
 int main(int argc [[maybe_unused]], char* argv [[maybe_unused]][]) {
+	i32 sum{0};
+	for (auto i : iota(0, 10)) {
+		debug(i);
+		sum += i;
+	}
+	cout << sum << nl;
+
 	// TODO
 	std::cout << std::flush;
 	return 0;
