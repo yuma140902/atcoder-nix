@@ -73,13 +73,6 @@ constexpr std::array<std::pair<i32, i32>, 4> around [[maybe_unused]]{
 using namespace ::util;
 
 int main(int argc [[maybe_unused]], char* argv [[maybe_unused]][]) {
-	i32 sum{0};
-	for (auto i : iota(0, 10)) {
-		debug(i);
-		sum += i;
-	}
-	cout << sum << nl;
-
 	// TODO
 	std::cout << std::flush;
 	return 0;
