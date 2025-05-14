@@ -44,12 +44,12 @@ using f64 = double;
 
 template <std::floating_point T, std::floating_point S>
 [[nodiscard]]
-inline auto fequal(T f, S g) -> bool {
+constexpr inline auto fequal(T f, S g) -> bool {
 	return std::abs(f - g) < EPS;
 }
 
 template <std::totally_ordered T>
-inline auto assign_max(T& lhs, T rhs) -> bool {
+constexpr inline auto assign_max(T& lhs, T rhs) -> bool {
 	if (lhs < rhs) {
 		lhs = rhs;
 		return true;
@@ -58,7 +58,7 @@ inline auto assign_max(T& lhs, T rhs) -> bool {
 }
 
 template <std::totally_ordered T>
-inline auto assign_min(T& lhs, T rhs) -> bool {
+constexpr inline auto assign_min(T& lhs, T rhs) -> bool {
 	if (lhs > rhs) {
 		lhs = rhs;
 		return true;
