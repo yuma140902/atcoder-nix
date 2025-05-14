@@ -17,12 +17,12 @@
 			devShells.default = pkgs.mkShell {
 				name = "atcoder";
 				packages = with pkgs; [
-					llvmPackages_16.clang-tools
-					llvmPackages_16.libcxxClang
+					llvmPackages_16.libstdcxxClang
 					gcc12
 					bear
 				];
 				hardeningDisable = [ "fortify" ];
+				pure=true;
 			};
 		});
 }
