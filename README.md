@@ -3,7 +3,7 @@
 ## 開発用シェルの起動方法
 
 ```sh
-nix shell -c "$SHELL"
+nix develop -c "$SHELL"
 ```
 
 ## プログラムのビルド方法
