@@ -9,6 +9,7 @@ nix develop -c "$SHELL"
 ## プログラムのビルド方法
 
 ```sh
+cd cpp_template/
 ./build [MODE] C++ファイル
 ```
 
