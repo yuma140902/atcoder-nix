@@ -1,3 +1,5 @@
+see: https://github.com/yuma140902/atcoder
+
 # atcoder-nix
 
 ## 開発用シェルの起動方法
